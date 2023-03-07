@@ -52,14 +52,18 @@ if (isset($_GET['name'])) {
         font-size: 1.2em;
         font-family: 'Rubik', sans-serif;
         font-weight: 500;
-        margin: 10px;
+        padding:10px;
         display: flex;
         justify-content: space-between;
         padding-bottom: 10px;
         border-bottom: black 1px solid;
         width: 25em;
     }
-
+    .leader-board-list:hover{
+        background-color: #000;
+        color: #fff;
+        cursor:pointer;
+    }
     .leader-board {
         list-style: none;
         padding: 0;
@@ -129,6 +133,7 @@ if (isset($_GET['name'])) {
         align-items: center;
         padding:20px;
     }
+
 </style>
 
 <body>
