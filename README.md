@@ -26,4 +26,3 @@ This is a simple quiz app built with PHP and a database to store user scores. It
 - open the folder in your code editor.
 - open the `database.php` file and change the database credentials to match your database.
 
-# i didn't finish this app i'm still working on it and i will be adding more features to it.
