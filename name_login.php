@@ -2,13 +2,13 @@
 require_once 'database.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
-
+    $id = $_POST['id'];
     $db = new DBConnection();
     $conn = $db->conn;
-
+    
     $sql = "INSERT INTO scores (name) VALUES ('$name')";
+    
     if ($conn->query($sql) === true) {
-        echo '<h1>Name saved</h1> successfully';
         header("Location: quiz.php?name=$name");
         exit();
     } else {
@@ -149,6 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <form action="name_login.php" method="POST" class="form">
             <input type="text" class="name" name="name" placeholder="enter your name" autocomplete="off" />
+            <input type="hidden" class="id" name="id">
             <button type="submit" class="btn">
                 <p>connect</p>
             </button>

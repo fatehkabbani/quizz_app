@@ -1,0 +1,154 @@
+{
+  "questions": [
+    {
+      "question": "Nommez uns des derniers processeurs informatiques ?",
+      "answers": [
+        "intel core i9 13th generation",
+        "windows 11",
+        "Amd ryzen 5 3600",
+        "Msi Rtx 4090"
+      ],
+      "correctAnswer": "intel core i9 13th generation"
+    },
+    {
+      "question": "Que signifie « Internet » ?",
+      "answers": [
+        "Réseau international",
+        "interconnexion de réseaux",
+        "réseau interne",
+        "filet international"
+      ],
+      "correctAnswer": "interconnexion de réseaux"
+    },
+    {
+      "question": "En quoi consiste le routage ?",
+      "answers": [
+        "envoyer des objets par la route",
+        "poser les câbles qui relient des ordinateurs entre eux",
+        "acheminer des données dans un réseau",
+        "construire des routes"
+      ],
+      "correctAnswer": "acheminer des données dans un réseau"
+    },
+    {
+      "question": "Réseau sans fil, réseau radio, réseau ad hoc, réseau WiFi...",
+      "answers": [
+        "Ces réseaux utilisent les ondes radio pour envoyer des données",
+        "Ces quatre termes désignent des modèles théoriques",
+        "Ces types de réseaux ont été inventés par des auteurs de science-fiction",
+        "Ces réseaux ne sont pas compatibles entre eux"
+      ],
+      "correctAnswer": "Ces réseaux utilisent les ondes radio pour envoyer des données"
+    },
+    {
+      "question": "Que définit le protocole IP (« Internet Protocol ») ?",
+      "answers": [
+        "Le fonctionnement de l'internet dans son ensemble",
+        "Le format des paquets échangés et des adresses des ordinateurs sur l'internet",
+        "Les autorisations légales des échanges au niveau international sur l'internet",
+        "La procédure de standardisation de l'internet"
+      ],
+      "correctAnswer": "Le format des paquets échangés et des adresses des ordinateurs sur l'internet"
+    },
+    {
+      "question": "Que désigne le web ?",
+      "answers": [
+        "Le réseau des ordinateurs connectés par l'internet",
+        "L'ensemble des pages HTML et liens qui relient d'un simple clic",
+        "Un piège tendu par 'big brother' pour surveiller tous les ordinateurs",
+        "C'est sigle : Worldwide Electronic Base"
+      ],
+      "correctAnswer": "L'ensemble des pages HTML et liens qui relient d'un simple clic"
+    },
+    {
+      "question": "Qu'est-ce qu'un datagramme ?",
+      "answers": [
+        "Une unité de mesure de données",
+        "La représentation graphique de données dans un réseau",
+        "Le poids d'un bit",
+        "Un paquet de données en transit"
+      ],
+      "correctAnswer": "Un paquet de données en transit"
+    },
+    {
+      "question": "Qu'est-ce qu'un pare-feu réseau ?",
+      "answers": [
+        "Un outil de protection des réseaux contre les attaques et les intrusions",
+        "Un protocole de communication entre les périphériques réseau",
+        "Un système de transmission de données via les ondes radio",
+        "Un dispositif de stockage en réseau pour les données"
+      ],
+      "correctAnswer": "Un outil de protection des réseaux contre les attaques et les intrusions"
+    },
+    {
+      "question": "Qu'est-ce qu'une adresse MAC ?",
+      "answers": [
+        "Une adresse IP publique",
+        "Une adresse IP privée",
+        "Une adresse de port pour les connexions réseau",
+        "Une adresse physique unique assignée à chaque carte réseau"
+      ],
+      "correctAnswer": "Une adresse physique unique assignée à chaque carte réseau"
+    },
+    {
+      "question": "Qu'est-ce qu'une topologie de réseau ?",
+      "answers": [
+        "Un système de contrôle d'accès aux réseaux",
+        "Une méthode de gestion de la bande passante des réseaux",
+        "Un modèle de configuration physique ou logique d'un réseau",
+        "Un système de protection contre les virus informatiques"
+      ],
+      "correctAnswer": "Un modèle de configuration physique ou logique d'un réseau"
+    },
+    {
+      "question": "Qu'est-ce qu'un serveur DNS ?",
+      "answers": [
+      "Un serveur qui stocke les fichiers de configuration réseau",
+      "Un serveur qui stocke les données de sécurité du réseau",
+      "Un serveur qui résout les noms de domaine en adresses IP",
+      "Un serveur qui gère les connexions à distance"
+      ],
+      "correctAnswer": "Un serveur qui résout les noms de domaine en adresses IP"
+      },
+      {
+      "question": "Qu'est-ce qu'un protocole de communication ?",
+      "answers": [
+      "Un logiciel de sécurité réseau",
+      "Un ensemble de règles pour la transmission de données entre les périphériques réseau",
+      "Un serveur qui stocke les données de configuration réseau",
+      "Un système de gestion de la bande passante des réseaux"
+      ],
+      "correctAnswer": "Un ensemble de règles pour la transmission de données entre les périphériques réseau"
+      },
+      {
+      "question": "Qu'est-ce qu'un switch réseau ?",
+      "answers": [
+      "Un dispositif de stockage en réseau pour les données",
+      "Un protocole de communication entre les périphériques réseau",
+      "Un système de transmission de données via les ondes radio",
+      "Un appareil qui relie les périphériques réseau et permet la communication entre eux"
+      ],
+      "correctAnswer": "Un appareil qui relie les périphériques réseau et permet la communication entre eux"
+      },
+      {
+      "question": "Qu'est-ce qu'un routeur réseau ?",
+      "answers": [
+      "Un appareil qui relie les périphériques réseau et permet la communication entre eux",
+      "Un serveur qui stocke les données de configuration réseau",
+      "Un système de transmission de données via les ondes radio",
+      "Un dispositif qui détermine le meilleur chemin pour acheminer les paquets de données à leur destination"
+      ],
+      "correctAnswer": "Un dispositif qui détermine le meilleur chemin pour acheminer les paquets de données à leur destination"
+      },
+      {
+      "question": "Qu'est-ce qu'un VLAN ?",
+      "answers": [
+      "Un protocole de communication pour les réseaux sans fil",
+      "Un sous-réseau logique créé à partir d'un réseau physique",
+      "Un serveur qui stocke les données de sécurité du réseau",
+      "Un système de gestion de la bande passante des réseaux"
+      ],
+      "correctAnswer": "Un sous-réseau logique créé à partir d'un réseau physique"
+      }
+  ]
+}

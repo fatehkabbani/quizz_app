@@ -33,205 +33,158 @@ if (isset($_GET['name'])) {
     <title>Document</title>
 </head>
 <style>
-    body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+}
 
-}
-html{
-    scroll-behavior: smooth;
-}
-.question-container{
+#question-container {
     height: 70vh;
-    width:100vw;
+    width: 100vw;
     background-color: #f5f5f5;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.question-container #question{
+
+#question-container #question {
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 1rem;
 }
-.answer-container{
-    width: 100%;
-    height:30vh;
+
+#answers {
+    width: 100vw;
+    height: 30vh;
     display: flex;
     justify-content: space-around;
     align-items: stretch;
     flex-wrap: wrap;
+
 }
-.answer-container .answer-btn{
-    width:50%;
-    border:0px;
-    outline:0;
-    color:white;
-    font-size:2vw;
+
+.answer-button {
+    width: 50%;
+    border: 0px;
+    outline: 0;
+    color: white;
+    font-size: 2vw;
     font-weight: bold;
-}   
-.answer-container .answer-btn:hover{
-    filter:brightness(90%);
-    cursor:pointer;
-
 }
 
-.answer-btn:focus{
-    filter:brightness(80%);
-    opacity: 0.7;
+.answer-button:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+
 }
 </style>
+
 <body>
-    <h1 id="score"></h1>
     <div class="container">
-        <div class="question-container">
-            <div id="question"></div>
-            <p id="score" name="score"></p>
-            <button id="next" onclick="checkAnswer()">next</button>
+        <div id="question-container">
+            <h1 id="question"></h1>
         </div>
-        <div class="answer-container">
-            <button class="answer-btn" id="option1" value=""></button>
-            <button class="answer-btn" id="option2" value=""></button>
-            <button class="answer-btn" id="option3" value=""></button>
-            <button class="answer-btn" id="option4" value=""></button>
+        <div id="answers">
+            <button class="answer-button"></button>
+            <button class="answer-button"></button>
+            <button class="answer-button"></button>
+            <button class="answer-button"></button>
         </div>
     </div>
     <form method="POST">
         <input type="hidden" name="name" value="<?php echo $name; ?>">
         <input type="hidden" name="score" id="score-input">
 
-    <button type="submit" id="submit">submit</button>
+        <button type="submit" id="submit">submit</button>
     </form>
     <script>
-        const next = document.getElementById("next");
-        const question = document.getElementById('question');
-        const option1 = document.getElementById("option1");
-        const option2 = document.getElementById("option2");
-        const option3 = document.getElementById("option3");
-        const option4 = document.getElementById("option4");
-        let scoreElement = document.getElementById('score');
-        let scoreInput = document.getElementById('score-input');
-        function assignButtonColors() {
-            const colors = ["#27890D", "#D89E02", "#1368CE", "#E21B3C"];
+    // Initialize variables to track the current question and the user's score
+    let currentQuestion = 0;
+    let score = 0;
 
-            const buttons = document.getElementsByClassName("answer-btn");
-            const randomColorChecked = [];
+    // Select the HTML elements we'll be working with
+    const container = document.querySelector('.container');
+    const question = document.querySelector('#question');
+    const answerButtons = document.querySelectorAll('.answer-button');
 
-            for (let i = 0; i < buttons.length; i++) {
-                const availableColors = colors.filter(color => !randomColorChecked.includes(color));
-                const randomColor = availableColors[Math.floor(Math.random() * availableColors.length)];
-                buttons[i].style.backgroundColor = randomColor;
-                randomColorChecked.push(randomColor);
-            }
+    // Define a function to assign random colors to the answer buttons
+    function assignButtonColors() {
+        // Define an array of color values to choose from
+        const colors = ["#27890D", "#D89E02", "#1368CE", "#E21B3C"];
+        // Create an empty array to keep track of colors we've already used
+        const randomColorChecked = [];
+        // Loop through each answer button
+        for (let i = 0; i < answerButtons.length; i++) {
+            // Filter the available colors by removing any that have already been used
+            const availableColors = colors.filter(color => !randomColorChecked.includes(color));
+            // Choose a random color from the available colors
+            const randomColor = availableColors[Math.floor(Math.random() * availableColors.length)];
+            // Apply the random color to the answer button
+            answerButtons[i].style.backgroundColor = randomColor;
+            // Add the color to the list of checked colors
+            randomColorChecked.push(randomColor);
         }
-        assignButtonColors();
-let answers = `{
-    "question":[
-        {
-            "number":1,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":2,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":3,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":4,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":5,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":6,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":7,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":8,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":9,
-            "question":"What is the capital of India?",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        },
-        {
-            "number":10,
-            "question":"hi",
-            "options":["Delhi","Mumbai","Kolkata","Chennai"],
-            "answer":"Delhi"
-        }
-    ]
-}`;
-        const obj = JSON.parse(answers);
+    }
+    // Call the assignButtonColors function to apply random colors to the answer buttons
+    assignButtonColors();
 
-        let i = 0;
-        let score = 0;
-        function showQuestion() {
-            question.innerHTML = obj.question[i]?.question;
-            option1.innerHTML = obj.question[i]?.options[0];
-            option2.innerHTML = obj.question[i]?.options[1];
-            option3.innerHTML = obj.question[i]?.options[2];
-            option4.innerHTML = obj.question[i]?.options[3];
-            // document.getElementById("score").innerHTML = score;
-            option1.value = obj.question[i].options[0];
-            option2.value = obj.question[i].options[1];
-            option3.value = obj.question[i].options[2];
-            option4.value = obj.question[i].options[3];
-        }
-        showQuestion();
+    // Load the questions data from the JSON file
+    fetch("questions.json")
+        .then(response => response.json())
+        .then(data => {
+            // Extract the array of questions from the data object
+            let questions = data.questions;
+            // Initialize variables to track the current question and the user's score
+            let currentQuestionIndex = 0;
+            let score = 0;
 
-        const checkAnswer = () => {
-            let options = [option1, option2, option3, option4];
-            for (let j = 0; j < obj.question[i].options.length; j++) {
-                options[j].onclick = function () {
-                    if (this.value === obj.question[i].answer) {
-                        score++;
-                        if (i < obj.question.length - 1) {
-                            console.log(obj.question.length)
-                            i++;
-                        } else {
-                            console.log(`nice you finished the test with:${score} score`)
+            // Define a function to display the current question and answer options
+            function displayQuestion() {
+                // Retrieve the current question object from the questions array
+                let currentQuestion = questions[currentQuestionIndex];
+                // Update the question text in the HTML
+                let questionText = document.getElementById("question");
+                questionText.innerText = currentQuestion.question;
+
+                // Loop through each answer button
+                let answerButtons = document.getElementsByClassName("answer-button");
+                for (let i = 0; i < answerButtons.length; i++) {
+                    // Clone the current answer button to create a new button for the current answer option
+                    let clonedButton = answerButtons[i].cloneNode(true);
+                    // Set the text of the cloned button to the current answer option text
+                    clonedButton.innerText = currentQuestion.answers[i];
+                    // Replace the original answer button with the cloned button
+                    answerButtons[i].parentNode.replaceChild(clonedButton, answerButtons[i]);
+                    // Add an event listener to the cloned button to handle the click event
+                    clonedButton.addEventListener("click", function() {
+                        // If the user's answer is correct, increment the score
+                        if (clonedButton.innerText === currentQuestion.correctAnswer) {
+                            score++;
                         }
-                        console.log(score)
-                    }
-                    scoreElement.innerText = score;
-                     scoreInput.value = score;
-                };
-
+                        // If we've reached the end of the questions array, display the final score and end the quiz
+                        if (currentQuestionIndex >= questions.length - 1) {
+                            questionText.innerText = `Your score: ${score} out of ${questions.length}`;
+                            for (let j = 0; j < answerButtons.length; j++) {
+                                answerButtons[j].style.display = "none";
+                                document.getElementById('score-input').value = score;
+                            }
+                            // Otherwise, move on to the next question
+                        } else {
+                            currentQuestionIndex++;
+                            displayQuestion();
+                        }
+                    });
+                }
             }
-            showQuestion();
-        }
 
-        //TODO  add question number and some other thing 
+            // Call the displayQuestion function
+            displayQuestion();
+        })
+        // catch error and console it 
+        .catch(error => console.error(error));
+    //TODO  add question number and some other thing 
     </script>
 </body>
 
