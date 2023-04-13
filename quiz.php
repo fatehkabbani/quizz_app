@@ -79,6 +79,12 @@ body {
     cursor: pointer;
 
 }
+#submit{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
 </style>
 
 <body>
@@ -97,12 +103,13 @@ body {
         <input type="hidden" name="name" value="<?php echo $name; ?>">
         <input type="hidden" name="score" id="score-input">
 
-        <button type="submit" id="submit">submit</button>
+        <button type="submit" id="submit" style="display: none;">submit</button>
     </form>
     <script>
     // Initialize variables to track the current question and the user's score
     let currentQuestion = 0;
     let score = 0;
+    let questionsAnswered = 0;
 
     // Select the HTML elements we'll be working with
     const container = document.querySelector('.container');
@@ -160,15 +167,18 @@ body {
                     // Add an event listener to the cloned button to handle the click event
                     clonedButton.addEventListener("click", function() {
                         // If the user's answer is correct, increment the score
+                        questionsAnswered++;
                         if (clonedButton.innerText === currentQuestion.correctAnswer) {
                             score++;
                         }
                         // If we've reached the end of the questions array, display the final score and end the quiz
-                        if (currentQuestionIndex >= questions.length - 1) {
+                        if (currentQuestionIndex === questions.length) {
                             questionText.innerText = `Your score: ${score} out of ${questions.length}`;
                             for (let j = 0; j < answerButtons.length; j++) {
                                 answerButtons[j].style.display = "none";
                                 document.getElementById('score-input').value = score;
+                                document.getElementById("submit").style.display = "block";
+
                             }
                             // Otherwise, move on to the next question
                         } else {
