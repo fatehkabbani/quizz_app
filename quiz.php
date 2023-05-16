@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once 'php/database.php';
 
 if (isset($_GET['name'])) {
     $name = $_GET['name'];
@@ -29,7 +29,7 @@ if (isset($_GET['name'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="styles/quiz.css">
 </head>
 
 
@@ -51,7 +51,7 @@ if (isset($_GET['name'])) {
 
         <button type="submit" id="submit" style="display: none;">submit</button>
     </form>
-    <script src="script.js"></script>
+    <script src="script/script.js"></script>
 </body>
 
 </html>

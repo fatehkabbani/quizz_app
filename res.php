@@ -1,5 +1,5 @@
 <?php
-include_once 'database.php';
+include_once 'php/database.php';
 // get score from database
 if (isset($_GET['name'])) {
     $name = $_GET['name'];
@@ -29,7 +29,7 @@ if (isset($_GET['name'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="res_style.css">
+    <link rel="stylesheet" href="styles/res_style.css">
 </head>
 
 

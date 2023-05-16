@@ -33,7 +33,7 @@ function assignButtonColors() {
 assignButtonColors();
 
 // Load the questions data from the JSON file
-fetch("questions.json")
+fetch("script/questions.json")
   .then((response) => response.json())
   .then((data) => {
     // Extract the array of questions from the data object
