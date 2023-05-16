@@ -5,8 +5,12 @@ if (isset($_GET['name'])) {
     $name = $_GET['name'];
     $sql = "SELECT score FROM scores WHERE name = '$name'";
     $result = $laison->query($sql);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    $score = $row['score'];
+    if ($result == true) {
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        $score = $row['score'];
+    } else {
+        echo 'Failed to fetch score from the database.';
+    }
 } else {
     echo 'Error: Name parameter not found.';
 }

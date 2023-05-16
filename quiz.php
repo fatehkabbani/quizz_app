@@ -6,14 +6,14 @@ if (isset($_GET['name'])) {
 
     if (isset($_POST['score'])) {
         $score = $_POST['score'];
-
+    
         $sql = "UPDATE scores SET score = '$score' WHERE name = '$name'";
-        $conn = $laison->prepare($sql);
-        if ($conn == true) {
+        $result = $laison->exec($sql);
+        if ($result !== false) {
             header("Location: res.php?name=$name");
             exit();
         } else {
-            echo 'hello world';
+            echo 'Failed to update score in the database.';
         }
     }
 } else {
