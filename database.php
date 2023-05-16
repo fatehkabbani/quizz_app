@@ -1,32 +1,18 @@
 <?php
-class DBConnection
-{
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'project';
+$config = array(
+	'host'      => 'localhost',
+	'username'  => 'root',
+	'password' => '',
+	'database'  => 'project'
+);
 
-    public $conn;
 
-    public function __construct()
-    {
-        if (!isset($this->conn)) {
-            $this->conn = new mysqli(
-                $this->host,
-                $this->username,
-                $this->password,
-                $this->database
-            );
-
-            if (!$this->conn) {
-                echo 'Cannot connect to database server';
-                exit();
-            }
-        }
-    }
-    public function __destruct()
-    {
-        $this->conn->close();
-    }
+try{
+	$laison = new PDO('mysql:dbname='.$config['database'].';host='.$config['host'].";charset=utf8",$config['username'],$config['password']);	
+} 
+catch(PDOException $exception){
+	 echo($exception->getMessage());  //pas diffusion sur internet qu'en mode local!'
+exit('erreur de conexion a la PDO');
 }
+
 ?>
