@@ -6,27 +6,17 @@ let questionsAnswered = 0;
 // Select the HTML elements we'll be working with
 const container = document.querySelector(".container");
 const question = document.querySelector("#question");
-const answerButtons = document.querySelectorAll(".answer-button");
 
 // Define a function to assign random colors to the answer buttons
 function assignButtonColors() {
-  // Define an array of color values to choose from
+  const answerButtons = document.querySelectorAll(".answer-button");
   const colors = ["#27890D", "#D89E02", "#1368CE", "#E21B3C"];
-  // Create an empty array to keep track of colors we've already used
   const randomColorChecked = [];
-  // Loop through each answer button
   for (let i = 0; i < answerButtons.length; i++) {
-    // Filter the available colors by removing any that have already been used
-    const availableColors = colors.filter(
-      (color) => !randomColorChecked.includes(color)
-    );
-    // Choose a random color from the available colors
-    const randomColor =
-      availableColors[Math.floor(Math.random() * availableColors.length)];
-    // Apply the random color to the answer button
-    answerButtons[i].style.backgroundColor = randomColor;
-    // Add the color to the list of checked colors
+    const availableColors = colors.filter((color) => !randomColorChecked.includes(color));
+    const randomColor = availableColors[Math.floor(Math.random() * availableColors.length)];
     randomColorChecked.push(randomColor);
+    answerButtons[i].style.backgroundColor = randomColor;
   }
 }
 // Call the assignButtonColors function to apply random colors to the answer buttons
@@ -62,6 +52,7 @@ fetch("script/questions.json")
           clonedButton,
           answerButtons[i]
         );
+      
         // Add an event listener to the cloned button to handle the click event
         clonedButton.addEventListener("click", function () {
           // If the user's answer is correct, increment the score
@@ -76,9 +67,11 @@ fetch("script/questions.json")
               answerButtons[j].style.display = "none";
               document.getElementById("score-input").value = score;
               document.getElementById("submit").style.display = "block";
+              assignButtonColors();
             }
             // Otherwise, move on to the next question
           } else {
+            assignButtonColors();
             currentQuestionIndex++;
             displayQuestion();
           }
