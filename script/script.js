@@ -1,13 +1,12 @@
-// Initialize variables to track the current question and the user's score
 let currentQuestion = 0;
 let score = 0;
 let questionsAnswered = 0;
 
-// Select the HTML elements we'll be working with
+// choissir les éléments HTML avec lesquels nous allons travailler
 const container = document.querySelector(".container");
 const question = document.querySelector("#question");
 
-// Define a function to assign random colors to the answer buttons
+// defnir une fonction pour assigner des couleurs aléatoires aux boutons de réponse
 function assignButtonColors() {
   const answerButtons = document.querySelectorAll(".answer-button");
   const colors = ["#27890D", "#D89E02", "#1368CE", "#E21B3C"];
@@ -19,48 +18,48 @@ function assignButtonColors() {
     answerButtons[i].style.backgroundColor = randomColor;
   }
 }
-// Call the assignButtonColors function to apply random colors to the answer buttons
+// appler la fonction assignButtonColors pour appliquer des couleurs aléatoires aux boutons de réponse
 assignButtonColors();
 
-// Load the questions data from the JSON file
+// charger les données des questions depuis le fichier JSON
 fetch("script/questions.json")
   .then((response) => response.json())
   .then((data) => {
-    // Extract the array of questions from the data object
+    // extrait le tableau de questions de l'objet data
     let questions = data.questions;
-    // Initialize variables to track the current question and the user's score
+    // initiailesr les variables pour suivre la question actuelle et le score de l'utilisateur
     let currentQuestionIndex = 0;
     let score = 0;
 
-    // Define a function to display the current question and answer options
+    // defnir une fonction pour afficher la question actuelle et les options de réponse
     function displayQuestion() {
-      // Retrieve the current question object from the questions array
+      // recupérer l'objet de la question actuelle du tableau des questions
       let currentQuestion = questions[currentQuestionIndex];
-      // Update the question text in the HTML
+      // telecharger le texte de la question dans l'élément HTML
       let questionText = document.getElementById("question");
       questionText.innerText = currentQuestion.question;
 
-      // Loop through each answer button
+      // fair une boucle sur chaque bouton de réponse
       let answerButtons = document.getElementsByClassName("answer-button");
       for (let i = 0; i < answerButtons.length; i++) {
-        // Clone the current answer button to create a new button for the current answer option
+        // cloner le bouton de réponse actuel pour créer un nouveau bouton pour l'option de réponse actuelle
         let clonedButton = answerButtons[i].cloneNode(true);
-        // Set the text of the cloned button to the current answer option text
+        // ensamble le texte du bouton cloné avec le texte de l'option de réponse actuelle
         clonedButton.innerText = currentQuestion.answers[i];
-        // Replace the original answer button with the cloned button
+        // remplacer le bouton de réponse original par le bouton cloné
         answerButtons[i].parentNode.replaceChild(
           clonedButton,
           answerButtons[i]
         );
       
-        // Add an event listener to the cloned button to handle the click event
+        // ajouter un écouteur d'événements au bouton cloné pour gérer l'événement de clic
         clonedButton.addEventListener("click", function () {
-          // If the user's answer is correct, increment the score
+          // si la réponse de l'utilisateur est correcte, incrémentez le score
           questionsAnswered++;
           if (clonedButton.innerText === currentQuestion.correctAnswer) {
             score++;
           }
-          // If we've reached the end of the questions array, display the final score and end the quiz
+          // si nous avons atteint la fin du tableau des questions, affichez le score final et terminez le quiz
           if (currentQuestionIndex === questions.length) {
             questionText.innerText = `Your score: ${score} out of ${questions.length}`;
             for (let j = 0; j < answerButtons.length; j++) {
@@ -69,7 +68,7 @@ fetch("script/questions.json")
               document.getElementById("submit").style.display = "block";
               assignButtonColors();
             }
-            // Otherwise, move on to the next question
+            // autrement, passez à la question suivante
           } else {
             assignButtonColors();
             currentQuestionIndex++;
@@ -79,8 +78,8 @@ fetch("script/questions.json")
       }
     }
 
-    // Call the displayQuestion function
+    // applez la fonction displayQuestion
     displayQuestion();
   })
-  // catch error and console it
+  // attraper (catch) l'erreur et la fair apparaitre dans la console
   .catch((error) => console.error(error));

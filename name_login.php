@@ -31,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container">
         <form action="name_login.php" method="POST" class="form">
-            <input type="text" class="name" name="name" placeholder="enter your name" autocomplete="off" />
+            <input type="text" class="name" name="name" placeholder="entre votre nom" autocomplete="off" />
             <input type="hidden" class="id" name="id">
             <button type="submit" class="btn">
-                <p>connect</p>
+                <p>connecter</p>
             </button>
         </form>
     </div>

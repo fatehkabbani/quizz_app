@@ -74,7 +74,7 @@ if (isset($_GET['name'])) {
                         '</li>';
                 }
                 ?>
-                <button type="submit">take another test</button>
+                <button type="submit">faire un autre test</button>
             </fieldset>
         </div>
     </div>

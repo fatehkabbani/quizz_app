@@ -49,7 +49,7 @@ if (isset($_GET['name'])) {
         <input type="hidden" name="name" value="<?php echo $name; ?>">
         <input type="hidden" name="score" id="score-input">
 
-        <button type="submit" id="submit" style="display: none;">submit</button>
+        <button type="submit" id="submit" style="display: none;">entree</button>
     </form>
     <script src="script/script.js"></script>
 </body>
